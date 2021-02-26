@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 //FireBase
 var admin = require("firebase-admin");
-var serviceAccount = require("./urlshortner-8edae-firebase-adminsdk-baciw-188b1607d8.json");
+var serviceAccount = require("./urlshortner-8edae-firebase-adminsdk-baciw-6ff97165db.json");
 const { response } = require('express');
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -47,7 +47,7 @@ app.post('/post', (req, res) => {
             doc.set({url});
             res.send("Done");
         } else {
-            res.status(403).send("Forbidden")
+            res.status(403).send("Forbiden")
         }
     })
 
