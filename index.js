@@ -24,18 +24,43 @@ const shortner =  admin.firestore().collection("shortner");
 const usersdb =  admin.firestore().collection("usersdb");
 
 app.get('/:short', (req, res) => {
-    // console.log(req.params);
+    //console.log(req.params);
     const short = req.params.short;
+    //const number = req.params.number;
     const doc = shortner.doc(short);
+    
     // console.log(doc)
     doc.get().then(response => {
         const data = response.data();
         // console.log(data)
+        // if(number && data && data.url)
+        //     res.redirect(301, data.url + number);
         if(data && data.url)
             res.redirect(301, data.url);
         else 
             res.redirect(301, "https://google.com");
     })
+})
+
+app.get('/whatsapp/:number', (req, res) => {
+    const url = 'https://api.whatsapp.com/send?phone=+91'
+    res.redirect(301, url + req.params.number);
+    // //console.log(req.params);
+    // const short = req.params.short;
+    // //const number = req.params.number;
+    // const doc = shortner.doc(short);
+    
+    // // console.log(doc)
+    // doc.get().then(response => {
+    //     const data = response.data();
+    //     // console.log(data)
+    //     // if(number && data && data.url)
+    //     //     res.redirect(301, data.url + number);
+    //     if(data && data.url)
+    //         res.redirect(301, data.url);
+    //     else 
+    //         res.redirect(301, "https://google.com");
+    // })
 })
 
 app.post('/post', (req, res) => {
