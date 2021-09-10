@@ -38,7 +38,7 @@ app.get('/:short', (req, res) => {
     })
 })
 
-app.get('/whatsapp/:number', (req, res) => {
+app.get('/w/:number', (req, res) => {
     const url = 'https://api.whatsapp.com/send?phone=+91'
     res.redirect(301, url + req.params.number);
     
